@@ -1,0 +1,8 @@
+Developer Notes
+
+AdamNetCode
+
+-Issue with importing Keras datasets in Python-PyCharm
+
+Running command below (as indicated in https://github.com/tensorflow/tensorflow/issues/10779) helped:
+/Applications/Python\ 3.6/Install\ Certificates.command
