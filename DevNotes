@@ -6,3 +6,5 @@ AdamNetCode
 
 Running command below (as indicated in https://github.com/tensorflow/tensorflow/issues/10779) helped:
 /Applications/Python\ 3.6/Install\ Certificates.command
+
+-Jupiter notebook token=0bfae4cb17b0114b09da13b5b1f8c5415f1a4491aa2f03a3

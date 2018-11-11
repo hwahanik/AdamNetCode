@@ -12,26 +12,42 @@ from __future__ import print_function
 
 import trainAndEvaluate
 import tensorflow as tf
+import matplotlib.pyplot as plt
+from matplotlib import interactive
+interactive(True)
 
 (x_train, y_train), (x_test, y_test) = (
     tf.keras.datasets.boston_housing.load_data())
 
 # @title AdaNet parameters
 LEARNING_RATE = 0.001   # @param {type:"number"}
-TRAIN_STEPS = 100000    # @param {type:"integer"}
+TRAIN_STEPS = 1000      # @param {type:"integer"} 100000
 BATCH_SIZE = 32         # @param {type:"integer"}
 
-LEARN_MIXTURE_WEIGHTS = False   # @param {type:"boolean"}
-ADANET_LAMBDA = 0               # @param {type:"number"}
 
+# Use variable weights that appear in linear combination of subnetworks.
+# LEARN_MIXTURE_WEIGHTS # @param {type:"boolean"}
 
-results, _ = trainAndEvaluate.train_and_evaluate(x_train, y_train, x_test, y_test,
-                                                 LEARNING_RATE,
-                                                 TRAIN_STEPS,
-                                                 BATCH_SIZE,
-                                                 LEARN_MIXTURE_WEIGHTS,
-                                                 ADANET_LAMBDA)
+# lambda parameter serves to prevent the optimization from assigning too
+# much weight to more complex subnetworks
+# ADANET_LAMBDA         # @param {type:"number"}
 
-print("Loss:", results["average_loss"])
-print("Architecture:", trainAndEvaluate.ensemble_architecture(results))
+# Size of adaptive architecture of AdamNet.
+# BOOSTING_ITERATIONS = 5  # @param {type:"integer"}
 
+loss_results = []
+for i in range(1, 4):
+    results, _ = trainAndEvaluate.train_and_evaluate(x_train, y_train, x_test, y_test,
+                                                     LEARNING_RATE,
+                                                     TRAIN_STEPS,
+                                                     BATCH_SIZE,
+                                                     learn_mixture_weights=False,
+                                                     adanet_lambda=0,
+                                                     boosting_iterations=i)
+    loss_results.append(results["average_loss"])
+    print(loss_results)
+    print("Loss:", results["average_loss"])
+    print("Architecture:", trainAndEvaluate.ensemble_architecture(results))
+
+plt.scatter(list(range(1, 4)), loss_results)
+plt.show()

@@ -13,16 +13,13 @@ import tensorflow as tf
 import subnetworkGenerator
 import utils
 
-# Default boosting iterations
-BOOSTING_ITERATIONS = 5  # @param {type:"integer"}
-
 
 def train_and_evaluate(x_train, y_train, x_test, y_test,
                        learning_rate,
                        train_steps,
                        batch_size,
                        learn_mixture_weights,
-                       adanet_lambda):
+                       adanet_lambda, boosting_iterations):
     """Trains an adanet.Estimator` to predict housing prices."""
 
     estimator = adanet.Estimator(
@@ -43,7 +40,7 @@ def train_and_evaluate(x_train, y_train, x_test, y_test,
       adanet_lambda=adanet_lambda,
 
       # The number of train steps per iteration.
-      max_iteration_steps=train_steps // BOOSTING_ITERATIONS,
+      max_iteration_steps=train_steps // boosting_iterations,
 
       # The evaluator will evaluate the model on the full training set to
       # compute the overall AdaNet loss (train loss + complexity
