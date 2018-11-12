@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AdamNetCode.iml" filepath="$PROJECT_DIR$/.idea/AdamNetCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AdaNetCode.iml" filepath="$PROJECT_DIR$/.idea/AdaNetCode.iml" />
     </modules>
   </component>
 </project>
