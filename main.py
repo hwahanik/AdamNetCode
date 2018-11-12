@@ -61,8 +61,9 @@ def training_results(x_tr, y_tr, x_tst, y_tst, a_lambda, learn_mixtures):
     return [results["average_loss"], results["average_loss/adanet/uniform_average_ensemble"]]
 
 
-# Training without learning mixtures of deep networks, learn_mixtures = false
-# lambda = [0.1, 0.15, 0.2, 0.25 ... 1]
+# Training learning mixtures of deep networks, learn_mixtures = True
+# The Uniform training (learn_mixtures = False), is also reported by the AdaNet code,
+# and recovered using the option
 
 loss_results = []
 uniform_loss_results = []
@@ -86,8 +87,6 @@ print(uniform_loss_results)
 # Plotting results
 
 plt.ioff()
-epsilon = 1e-2
-
 fig, ax = plt.subplots()
 ax.scatter(adanet_lambda, loss_results, color="blue", alpha=0.5)
 ax.scatter(adanet_lambda, uniform_loss_results, c="green", alpha=0.5, )
@@ -99,7 +98,7 @@ title = "AdaNet ensemble: uniform (black) vs regularized (red), for depth = 5"
 ax.plot(adanet_lambda, loss_results, color="red")
 
 ax.plot(adanet_lambda, uniform_loss_results, color="black")
-l_range = np.linspace(0, 1, 6)
+l_range = np.linspace(0, 0.2, 6)
 
 plt.title(title, color="b", size="medium")
 plt.xlabel("regularization parameter", color="b", size="medium")
