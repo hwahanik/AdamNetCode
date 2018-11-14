@@ -4,7 +4,7 @@ Experimentation with AdaNet: Adaptive Structural Learning of Neural Networks.
 
 AdaNet defines an algorithm that adaptively grows a neural network as an ensemble of subnetworks that minimizes the AdaNet objective.
 
-In this project written for Insight, we study the impact in the loss, produced by the combined weighting of the network ensemble using uniform weights, and alternativley using convex optimization to calculate the optimum weights, and simulateneously control this effect with the regularizing parameter.
+In this project written for Insight, we study the impact in the loss, produced by the combined weighting of the network ensemble using uniform weights, and alternatively using convex optimization to calculate the optimum weights, and simulateneously control this effect with the regularizing parameter.
 
 
 How AdaNet uses the objective:
